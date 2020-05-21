@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-// Na bazie zadania jednostki z æwiczeñ 3-4
 public class CalcFrame extends JFrame implements ActionListener{
 	JTextField wpiszTekst;
 	JButton action = new JButton("Oblicz");
@@ -18,7 +17,7 @@ public class CalcFrame extends JFrame implements ActionListener{
 		wpiszTekst = new JTextField(10);
 		add(wpiszTekst);
 		add(new JLabel(" "));
-		String opcje[] = {"km","m"};
+		String opcje[] = {"stopnie","radiany"};
 		jednostki = new JComboBox(opcje);
 		jednostki.setBounds(50, 50, 70, 30);
 		add(jednostki);
@@ -34,15 +33,15 @@ public class CalcFrame extends JFrame implements ActionListener{
 			String jednostka = jednostki.getSelectedItem().toString();
 			int l = Integer.parseInt(liczba);
 			double c = 0;
-			if(jednostka == "km") {
-				c=(double) (l*0.621371192);
+			if(jednostka == "stopnie") {
+				c=(double) ((l*Math.PI)/180);
 				String w = String.valueOf(c);
-				wynik.setText("to " +w +" mil");
+				wynik.setText("to " +w +" radianów");
 			}
-			else if(jednostka == "m") {
-				c=(double) (l*0.000621371192);
+			else if(jednostka == "radiany") {
+				c=(double) ((l*180)/Math.PI);
 				String w = String.valueOf(c);
-				wynik.setText("to " +w +" mil");
+				wynik.setText("to " +w +" stopni");
 			}
 
 		}
